@@ -7,7 +7,12 @@ class GetRequester:
         self.url = url
 
     def get_response_body(self):
-        pass
+        responce =  requests.get(self.url)
+        return responce.content
 
     def load_json(self):
-        pass
+        people_list = []
+        people = json.loads(self.get_response_body())
+        for person in people:
+            people_list.append(person)
+        return people_list
